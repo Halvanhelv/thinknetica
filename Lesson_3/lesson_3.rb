@@ -95,14 +95,6 @@ class Train
   end
   end
 
-
-
-
-
-
-
-
-
 class Route
   attr_accessor :stations
   def initialize(stations = [])
