@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 alphabet = ('a'..'z').to_a
+vowels = %w[a e i o u]
 new_array = {}
-alphabet.each_with_index do |value, key|
-  new_array[key] = value if %w[a e i o u].include?(value)
+alphabet.each.with_index(1) do |value, key|
+  new_array[key] = value if vowels.include?(value)
 end
 puts new_array

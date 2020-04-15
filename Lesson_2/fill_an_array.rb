@@ -1,13 +1,4 @@
-array = [10]
-stop = 100
+# frozen_string_literal: true
 
-loop do
-  n = array.last + 5
-  if n <= stop
-    array.push n
-  else
-    break
-  end
-end
-
-puts array
+number = (10..100).step(5).to_a
+puts number
