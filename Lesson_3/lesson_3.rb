@@ -52,9 +52,6 @@ class Train
   def add_route(route)
     @route = route
     @current = route.first
-    puts route.first
-    puts '--------'
-    puts @first
     route.first.add_train(self)
     puts "Поезд №#{@number} готов ехать с станции #{@route.first.name} на станцию #{@route.last.name}"
     puts @route.first.class
@@ -70,6 +67,7 @@ class Train
       puts 'Станция конечная'
     end
   end
+
   def next
 
     if @current != @route.last
@@ -119,12 +117,5 @@ class Route
     stations
   end
 
-  def last
-    stations.last
-  end
-
-  def first
-    stations.first
-  end
 
 end
