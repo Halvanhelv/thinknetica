@@ -1,19 +1,19 @@
 class Station
-  attr_reader :name, :train
+  attr_reader :name, :trains
   attr_accessor :train
   def initialize(name)
     @name = name
-    @train = []
+    @trains = []
   end
 
   def add_train(train)
-    @train << train if train.route.stations.include?(self)
+    @trains << train if train.route.stations.include?(self)
 
     puts "На  станцию #{@name} Прибыл поезд поезд под номером #{train.number}"
   end
 
   def send_train(train)
-    @train.delete(train)
+    @trains.delete(train)
 
     puts "Со станции #{@name} отправлен поезд под номером #{train.number}"
   end
@@ -21,7 +21,7 @@ class Station
   def train_type
     cargo = 0
     passenger = 0
-    @train.each do |train|
+    @trains.select do |train|
       cargo += 1 if train.type == 'cargo'
       passenger += 1 if train.type == 'passenger'
     end
