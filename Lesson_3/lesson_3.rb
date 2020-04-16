@@ -44,14 +44,19 @@ class Train
     @type = type
     @count = count
   end
-
-  def cargo?
-    true if type == 'cargo'
+  [:cargo, :passenger].each do |m_type|
+    define_method "#{m_type}?" do
+      type == m_type.to_s
+      type == m_type.to_s
+    end
   end
-
-  def passenger?
-    true if type == 'passenger'
-  end
+  # def cargo?
+  #   true if type == 'cargo'
+  # end
+  #
+  # def passenger?
+  #   true if type == 'passenger'
+  # end
 
   def add_wagon
     if count > 0
