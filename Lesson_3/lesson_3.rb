@@ -1,6 +1,6 @@
 class Station
-  attr_reader :name, :trains
-  attr_accessor :train
+  attr_reader :name
+  attr_accessor :trains
   def initialize(name)
     @name = name
     @trains = []
@@ -19,14 +19,19 @@ class Station
   end
 
   def train_type
-    cargo = 0
-    passenger = 0
-    @trains.select do |train|
-      cargo += 1 if train.type == 'cargo'
-      passenger += 1 if train.type == 'passenger'
-    end
-    [cargo, passenger]
+    [@trains.count(&:cargo?), @trains.count(&:passenger?)]
+
   end
+
+  # def train_type
+  #   cargo = 0
+  #   passenger = 0
+  #   @train.each do |train|
+  #     cargo += 1 if train.type == 'cargo'
+  #     passenger += 1 if train.type == 'passenger'
+  #   end
+  #   [cargo, passenger]
+  # end
 
   end
 
@@ -40,6 +45,14 @@ class Train
     @count = count
   end
 
+  def cargo?
+    true if type == 'cargo'
+  end
+
+  def passenger?
+    true if type == 'passenger'
+  end
+
   def add_wagon
     if count > 0
       self.count -= 1
@@ -51,11 +64,10 @@ class Train
 
   def add_route(route)
     @route = route
-    @current = route.first
-    route.first.add_train(self)
-    puts "Поезд №#{@number} готов ехать с станции #{@route.first.name} на станцию #{@route.last.name}"
-    puts @route.first.class
-    @route
+    @current = route.stations.first
+    route.stations.first.add_train(self)
+    puts "Поезд №#{@number} готов ехать с станции #{@route.stations.first.name} на станцию #{@route.stations.last.name}"
+
   end
 
   def prev
