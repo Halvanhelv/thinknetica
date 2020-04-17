@@ -17,14 +17,20 @@ def create_train(number)
 end
 
 def create_route(name)
-  all_station_object =  ObjectSpace.each_object(Station)
+  names = []
+  all_station_object = ObjectSpace.each_object(Station)
   all_station_object.each do |index|
-
+    name.each do |second|
+      if index.name == second
+        names << index
+        puts names
+      end
+    end
 
 
   end
+  Route.new(names)
 
-  name = Route.new([name])
 
 end
 

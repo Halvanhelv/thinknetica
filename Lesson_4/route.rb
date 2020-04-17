@@ -1,7 +1,7 @@
 class Route
   attr_accessor :stations
   def initialize(stations = [])
-
+    puts stations
     if stations.size >= 2
       @stations = stations
       puts "Маршрут #{@stations.first.name} - #{@stations.last.name} создан"
