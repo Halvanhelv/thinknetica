@@ -1,19 +1,11 @@
 class Train
-  attr_reader  :number, :type
-  attr_accessor :speed,  :route, :current, :train_type, :wagons
+  attr_reader :number, :type
+  attr_accessor :speed, :route, :current, :train_type, :wagons
   def initialize(number)
     @speed = 0
     @number = number
     @wagons = []
   end
-  # [:cargo, :passenger].each do |m_type|
-  #   define_method "#{m_type}?" do
-  #     type == m_type.to_s
-  #   end
-  # end
-
-
-
   def cargo?
     true if type == 'cargo'
   end
@@ -32,7 +24,7 @@ class Train
 
     puts "Вагон #{wagon} прицеплен"
     else
-      puts "Приципите вагон типа #{type} "
+      puts 'Приципите вагон правильного типа'
     end
   end
 
@@ -55,13 +47,16 @@ class Train
   end
 
   def next_station
-
+    if @route
     if @current != @route.stations.last
       next_step = @route.stations.index(@current) + 1
       @current = @route.stations[next_step]
       route.stations[next_step].add_train(self)
     else
       puts 'Станция конечная'
+    end
+    else
+      puts "У поезда нет маршрута"
     end
   end
 
