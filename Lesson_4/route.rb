@@ -21,7 +21,12 @@ class Route
   end
 
   def list
-    stations
+    names = []
+    stations.each do |index|
+      names << index.name
+
+    end
+    names
   end
 
 

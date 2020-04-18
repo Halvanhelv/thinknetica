@@ -37,12 +37,16 @@ class Train
   end
 
   def prev_station
+    if @route
     if @current != @route.stations.first
       prev_step = @route.stations.index(@current) - 1
       @current = @route.stations[ prev_step]
       route.stations[prev_step].add_train(self)
     else
       puts 'Станция конечная'
+    end
+    else
+      puts "У поезда нет маршрута"
     end
   end
 
