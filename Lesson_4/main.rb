@@ -23,9 +23,7 @@ class Main
       id = gets.chomp.to_i
       case id
       when 1 then trains_menu
-
       when 2 then station_menu
-
       when 3 then routes_menu
 
       else
@@ -93,9 +91,9 @@ class Main
       case act
       when 1 then add_station(route)
       when 2 then remove_station(route)
-      else break end
-
-
+      else
+        break
+      end
     end
   end
 
@@ -118,7 +116,8 @@ class Main
             'Маршрутов нет'
           end
         else
-          break end
+          break
+        end
       end
     else
       puts 'Для создания маршрута нужно минимум две станции'
@@ -141,7 +140,9 @@ class Main
       case act
       when 1 then create_station
       when 2 then stations_list
-      else break end
+      else
+        break
+      end
     end
     end
 
@@ -266,4 +267,5 @@ class Main
   end
 
 end
+
 Main.new.go

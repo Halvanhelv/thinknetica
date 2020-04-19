@@ -15,7 +15,7 @@ class Train
   end
 
   def remove_wagon
-    wagons.delete(-1) if wagons.!empty?
+    wagons.delete(-1) unless wagons.empty?
   end
 
   def add_wagon(wagon)
