@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'modules/instance_counter'
 class Route
   include InstanceCounter
@@ -14,21 +15,17 @@ class Route
 
   def add_station(station, route)
     stations.insert(-2, station)
-    puts   "Станция #{station.name} добавлена в маршрут #{route} "
+    puts "Станция #{station.name} добавлена в маршрут #{route} "
   end
 
   def remove_station(station)
     stations.delete(station)
-    puts   "Станция #{station.name} удалена "
+    puts "Станция #{station.name} удалена "
   end
 
   def list
     names = []
-    stations.each do |index|
-      names << index.name
-
-    end
-    names
+    names = stations.map(&:name)
   end
 
 

@@ -20,11 +20,11 @@ class Train
   end
 
   def cargo?
-    true if type == 'cargo'
+    type == 'cargo'
   end
 
   def passenger?
-    true if type == 'passenger'
+    type == 'passenger'
   end
 
   def remove_wagon
@@ -33,9 +33,9 @@ class Train
 
   def add_wagon(wagon)
     if wagon.wagon_type == train_type
-    wagons << wagon
+      wagons << wagon
 
-    puts "Вагон #{wagon} прицеплен"
+      puts "Вагон #{wagon} прицеплен"
     else
       puts 'Приципите вагон правильного типа'
     end
@@ -50,7 +50,8 @@ class Train
   end
 
   def prev_station
-    if @route
+    return puts 'У поезда нет маршрута' unless @route
+
     if @current != @route.stations.first
       prev_step = @route.stations.index(@current) - 1
       @current = @route.stations[ prev_step]
@@ -58,13 +59,12 @@ class Train
     else
       puts 'Станция конечная'
     end
-    else
-      puts "У поезда нет маршрута"
-    end
+
   end
 
   def next_station
-    if @route
+    return puts 'У поезда нет маршрута' unless @route
+
     if @current != @route.stations.last
       next_step = @route.stations.index(@current) + 1
       @current = @route.stations[next_step]
@@ -72,9 +72,7 @@ class Train
     else
       puts 'Станция конечная'
     end
-    else
-      puts "У поезда нет маршрута"
-    end
+
   end
 
   def add_speed(speed)
