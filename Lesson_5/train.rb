@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'modules/company_name'
 require_relative 'modules/instance_counter'
 class Train

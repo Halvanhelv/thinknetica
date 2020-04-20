@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module CompanyName
   def add_name(name)
     self.company_name = name

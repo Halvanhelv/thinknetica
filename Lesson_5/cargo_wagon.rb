@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require_relative 'modules/company_name'
 class CargoWagon
   include CompanyName
