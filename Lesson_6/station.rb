@@ -6,9 +6,10 @@ class Station
   @@stations = []
   def initialize(name)
     @name = name
+    validate!
     @trains = []
     @@stations << self
-    validate!
+
   end
 
   def self.all
