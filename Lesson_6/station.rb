@@ -21,7 +21,7 @@ class Station
     false
   end
   def validate!
-    raise 'Нет названия у станции' if @name.nil?
+    raise 'Нет названия у станции' unless @name
     raise 'Название станции должно иметь минимум 6 символов' if @name.length < 6
 
   end

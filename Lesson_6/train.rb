@@ -10,9 +10,10 @@ class Train
   def initialize(number)
     @speed = 0
     @number = number
+    validate!
     @wagons = []
     @@trains[number] = self
-    validate!
+
   end
 
   def self.find(number)
