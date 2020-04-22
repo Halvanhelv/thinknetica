@@ -226,6 +226,7 @@ class Main
       puts '3 Добавить Маршрут'
       puts '4 Вперед по маршруту'
       puts '5 Назад по маршруту'
+      puts '6 Назначить название компании изготовителя'
       act = gets.chomp.to_i
       case act
       when 1 then  add_wagons(train)
