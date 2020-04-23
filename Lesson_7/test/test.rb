@@ -94,18 +94,3 @@ def trains_block
   @trains.each {|train| yield(train)}
 end
 
-def show_stat
-  @stations.each do |station|
-    puts '---------------------'
-    puts "Станция #{station.name}. Поезда на станции:"
-    station.trains_block do |train|
-      puts "Поезд: #{train.number}, #{train.type}, #{train.carriages.size}"
-      puts 'Выгоны: '
-      if train.is_a?(PassengerTrain)
-        train.carriages_block {|c| puts "#{c.number} пассажирский, #{c.free_places} свободно, #{c.reserved_places} занято"}
-      elsif train.is_a?(CargoTrain)
-        train.carriages_block {|c| puts "#{c.number} грузовой, #{c.free_volume} свободно, #{c.reserved_volume} занято"}
-      end
-    end
-  end
-end
