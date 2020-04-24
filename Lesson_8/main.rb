@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'route'
 require_relative 'station'
 require_relative 'train'
@@ -15,7 +17,6 @@ class Main
   end
 
   def go
-
     loop do
       go_menu
       case gets.chomp.to_i
@@ -25,7 +26,6 @@ class Main
       when 4 then station_info
       else exit
       end
-
     end
   rescue RuntimeError => e
     puts e.message.to_s
@@ -43,7 +43,6 @@ class Main
   private
 
   def train_name(train)
-
     puts "Данный поезд принадлежит компании #{train.view_comp_name}"
   end
 
@@ -65,9 +64,7 @@ class Main
         puts "Поезд: #{train.number}, Тип: #{train.train_type}"
         puts 'Вагоны (номер, свобоно, занято):'
         wagons_info(train)
-
       end
-
     end
   end
 
@@ -84,11 +81,9 @@ class Main
   end
 
   def prev_station(train)
-
     train.prev_station
   rescue RuntimeError => e
     puts e.message.to_s
-
   end
 
   def stations_list
@@ -115,7 +110,6 @@ class Main
     stations_list
     stations_id = gets.chomp.to_i
     route.add_station(@stations[stations_id], stations_id)
-
   end
 
   def create_route_input
@@ -181,7 +175,6 @@ class Main
         break
       end
     end
-
   end
 
   def create_station
@@ -189,13 +182,11 @@ class Main
     puts 'Введите название станции'
     name = gets.chomp.to_s
     @stations << Station.new(name)
-
     rescue RuntimeError => e
       puts e.message.to_s
       retry
   end
     puts "Станция #{name} Создана"
-
   end
 
   def station_menu
@@ -252,7 +243,6 @@ class Main
   end
 
   def create_train
-
     puts 'Какой поезд создать: 1 -- Грузовой, 2 -- Пасажирский'
     case gets.chomp.to_i
     when 1 then create_cargo_train
@@ -261,7 +251,6 @@ class Main
     else
       raise 'Есть только два вида поездов'
     end
-
   rescue RuntimeError => e
     puts e.message.to_s
     retry
@@ -279,7 +268,6 @@ class Main
   end
 
   def add_wagons(train)
-
     add_wagons_menu(train)
     wagon_type = gets.chomp.to_i
     number = rand(100)
@@ -295,7 +283,6 @@ class Main
   rescue RuntimeError => e
     puts e.message.to_s
     retry
-
   end
 
   def add_cargo_wagon(number)
@@ -327,8 +314,7 @@ class Main
 
     loop do
       train_menu_puts(train)
-      act = gets.chomp.to_i
-      case act
+      case gets.chomp.to_i
       when 1 then  add_wagons(train)
       when 2 then  remove_wagons(train)
       when 3 then add_route(train)
@@ -340,9 +326,7 @@ class Main
       else
         break
       end
-
     end
-
   end
 
   def pick_wagon(train)
@@ -375,7 +359,6 @@ class Main
       else
         break
       end
-
     end
   rescue RuntimeError => e
     puts e.message.to_s
@@ -395,7 +378,6 @@ class Main
   end
 
   def passenger_wagon_menu(wagon)
-
     loop do
       passenger_wagon_menu_puts
       act = gets.chomp.to_i
@@ -404,7 +386,6 @@ class Main
       else
         break
       end
-
     end
   rescue RuntimeError => e
     puts e.message.to_s
@@ -421,7 +402,6 @@ class Main
   end
 
   def trains_menu
-
     loop do
       trains_menu_puts
       case gets.chomp.to_i
@@ -448,9 +428,5 @@ class Main
     puts e.message.to_s
     retry
   end
-
-
 end
 Main.new.go
-
-

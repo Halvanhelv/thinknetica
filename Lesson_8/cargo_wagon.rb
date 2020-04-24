@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require_relative 'modules/company_name'
 class CargoWagon < Wagon
-
   attr_reader :wagon_type, :capacity, :free_capacity
   def initialize(capacity, number)
     super(number)
@@ -19,5 +20,4 @@ class CargoWagon < Wagon
   def busy_capacity
     @capacity - @free_capacity
   end
-
 end

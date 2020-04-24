@@ -10,7 +10,6 @@ class PassengerWagon < Wagon
     @places = places
     @wagon_type = :passenger
     @free_places = places
-
   end
 
   def take_place

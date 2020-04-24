@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'modules/instance_counter'
 class Route
   include InstanceCounter
@@ -7,20 +8,20 @@ class Route
     @stations = stations
     validate!
   end
+
   def validate!
     raise 'Станций должно быть минимум две' if @stations.size < 2
-    if @stations.first == @stations.last
-      raise 'Начальная и конечные станции не могут быть одинаковыми'
-    end
 
-
+    raise '1 и 2 станции не разные' if @stations.first == @stations.last
   end
+
   def valid?
     validate!
     true
   rescue StandardError
     false
   end
+
   def add_station(station, route)
     stations.insert(-2, station)
     puts "Станция #{station.name} добавлена в маршрут #{route} "
@@ -32,9 +33,6 @@ class Route
   end
 
   def list
-    names = []
-    names = stations.map(&:name)
+    stations.map(&:name)
   end
-
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'modules/instance_counter'
 class Station
   include InstanceCounter
@@ -9,7 +11,6 @@ class Station
     validate!
     @trains = []
     @@stations << self
-
   end
 
   def trains_list
@@ -32,7 +33,6 @@ class Station
   def validate!
     raise 'Нет названия у станции' unless @name
     raise 'Название станции должно иметь минимум 6 символов' if @name.length < 6
-
   end
 
   def add_train(train)
