@@ -19,8 +19,8 @@ module Validation
     def validate!
 
       self.class.validations.each do |name, value|
-        presence = instance_variable_get("@#{name}")
-        send("validate_#{value[:type]}", presence, value[:options])
+        value = instance_variable_get("@#{name}")
+        send("validate_#{value[:type]}", value, value[:options])
 
       end
       true
@@ -38,13 +38,11 @@ module Validation
       raise 'Нет аргументов' if value.nil? || value.empty?
     end
 
-    def validate_format(name, format)
-      value = instance_variable_get("@#{name}")
+    def validate_format(value, format)
       raise 'Неверный формат' unless value =~ format.first
     end
 
-    def validate_type(name, type)
-      type_class = instance_variable_get("@#{name}").to_s
+    def validate_type(type_class, type)
       raise 'Неверный тип' unless type_class.class == type
     end
   end
