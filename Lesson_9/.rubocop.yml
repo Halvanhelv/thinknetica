@@ -1,0 +1,11 @@
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 30
+  Metrics/CyclomaticComplexity:
+    Enabled: false
+Style/ClassVars:
+  Enabled: false
+  Metrics/CyclomaticComplexity:
+    Enabled: false

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # # frozen_string_literal: true
 #
 # # block = proc { |x| puts x }
@@ -95,37 +96,36 @@
 # end
 #
 
-
-class Main
-  class << self; attr_accessor :sides
-    def check
-      @sides
-    end
-  end
-  @sides = {}
-
-
-  def initialize
-
-  end
-
-
-  def check
-    self.class.sides
-  end
-end
-
-class Suck < Main
-  class << self; attr_accessor :sides
-  def check
-    @sides
-  end
-  end
-  @sides = {}
-
-  def initialize(name)
-    self.class.sides[name] = self
-  end
-
- 
-end
+# class Main
+#   class << self; attr_accessor :sides
+#     def check
+#       @sides
+#     end
+#   end
+#   @sides = {}
+#
+#
+#   def initialize
+#
+#   end
+#
+#
+#   def check
+#     self.class.sides
+#   end
+# end
+#
+# class Suck < Main
+#   class << self; attr_accessor :sides
+#   def check
+#     @sides
+#   end
+#   end
+#   @sides = {}
+#
+#   def initialize(name)
+#     self.class.sides[name] = self
+#   end
+#
+#
+# end

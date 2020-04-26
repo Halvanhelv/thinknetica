@@ -2,9 +2,14 @@
 
 require_relative 'modules/company_name'
 require_relative 'modules/instance_counter'
+require_relative 'modules/acсessors'
+require_relative 'modules/validation'
 class Train
   include CompanyName
   include InstanceCounter
+  include Validation
+  extend Acсessors
+
   attr_reader :number, :type
   attr_accessor :speed, :route, :current, :train_type, :wagons
   NUMBER_FORMAT = /^[а-яa-z0-9]{3}-?[а-яa-z0-9]{2}$/i.freeze
