@@ -39,19 +39,19 @@ class Train
   def self.find(number)
     @trains[number]
   end
-
-  def validate!
-    raise 'Номер отсутствует' if @number.nil?
-    raise 'Неверная длина номера' if @number.length < 4 || @number.length > 7
-    raise 'Номер не соответствует формату' unless @number =~ NUMBER_FORMAT
-  end
-
-  def valid?
-    validate!
-    true
-  rescue StandardError
-    false
-  end
+  #
+  # def validate!
+  #   raise 'Номер отсутствует' if @number.nil?
+  #   raise 'Неверная длина номера' if @number.length < 4 || @number.length > 7
+  #   raise 'Номер не соответствует формату' unless @number =~ NUMBER_FORMAT
+  # end
+  #
+  # def valid?
+  #   validate!
+  #   true
+  # rescue StandardError
+  #   false
+  # end
 
   def cargo?
     type == 'cargo'
