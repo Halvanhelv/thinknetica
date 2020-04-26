@@ -7,6 +7,7 @@ module Validation
   end
 
   module ClassMethods
+    attr_reader :validations
     def validate(name, type, *options)
       @validations ||= {}
       @validations[name] == { type: type, options: options }
@@ -14,6 +15,7 @@ module Validation
   end
 
   module InstanceMethods
+
     def validate!
       self.class.validations.each do |name, value|
         send("validate_#{value[:type]}", name, value[:options])
