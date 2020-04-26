@@ -17,8 +17,11 @@ module Validation
   module InstanceMethods
 
     def validate!
+
       self.class.validations.each do |name, value|
-        send("validate_#{value[:type]}", name, value[:options])
+        presence = instance_variable_get("@#{name}")
+        send("validate_#{value[:type]}", presence, value[:options])
+
       end
       true
     end
@@ -31,8 +34,7 @@ module Validation
 
     private
 
-    def validate_presence(name)
-      value = instance_variable_get("@#{name}")
+    def validate_presence(value)
       raise 'Нет аргументов' if value.nil? || value.empty?
     end
 
