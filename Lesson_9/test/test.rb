@@ -115,17 +115,3 @@
 #   end
 # end
 #
-# class Suck < Main
-#   class << self; attr_accessor :sides
-#   def check
-#     @sides
-#   end
-#   end
-#   @sides = {}
-#
-#   def initialize(name)
-#     self.class.sides[name] = self
-#   end
-#
-#
-# end
