@@ -4,7 +4,7 @@
 # # block = proc { |x| puts x }
 # # block = lambda { |x| puts x }
 # # block = ->(x) {  puts x }
-# # PROC принимает любое количество аргументов(если их больше чем нужно) а лямбда нет
+# # PROC accepts any number of arguments (if there are more than needed) but lambda does not
 # # block = proc { puts 'x' }
 # # def m(block)
 # #   x = 'good'
@@ -13,12 +13,12 @@
 # #
 # # end
 # # m('str') { |x| puts x }
-#
-#
-#
-#
+
+
+
+
 # # frozen_string_literal: true
-#
+
 # # block1 = proc { |str| puts str + 'dwd' }
 # # def m1(str, block)
 # #   x = 'good'
@@ -28,9 +28,9 @@
 # # end
 # #
 # # m1('Abc', block1)
-#
-#
-#
+
+
+
 # # def m1(str, &block)
 # #   x = 'good'
 # #   puts "X from method #{block}"
@@ -39,8 +39,8 @@
 # # end
 # #
 # # m1('Abc') { |str| puts str + 'dwd' }
-#
-#
+
+
 # # def m1(str, &block)
 # #   x = 'good'
 # #   puts "X from method #{block}"
@@ -56,40 +56,40 @@
 # #
 # # def m1(str, &block)
 # #   x = 'good'
-# #   if  block_given? # Если блок передан
-# #     yield str # или block.call(str)
+# #   if  block_given? # If block is passed
+# #     yield str # or block.call(str)
 # #   else
-# #     puts 'Блок не передан'
+# #     puts 'Block not passed'
 # #     end
 # #   end
 # #
 # #
 # # m1('Abc') { |str| puts str + 'dwd' }
-#
-#
-# # В Ruby есть еще один способ записи блоков через lambda, это оператор ->:
+
+
+# # In Ruby there is another way to write blocks using lambda, this is the -> operator:
 # #
-# #     Запись
+# #     Writing
 # # ->(x) { puts x }
-# # это то же самое, что и
+# # is the same as
 # # lambda { |x| puts x }
-# # только короче.
-# #     Если встретите такую запись, не пугайтесь, это всего лишь lambda.
-#
-#
+# # just shorter.
+# #     If you see such notation, don't be scared, it's just lambda.
+
+
 # # def m1(&block)
-# #   if block_given? # Если блок передан
-# #     block.call(1, 2, 3,4) # или block.call(str)
+# #   if block_given? # If block is passed
+# #     block.call(1, 2, 3,4) # or block.call(str)
 # #   else
-# #     puts 'Блок не передан'
+# #     puts 'Block not passed'
 # #   end
 # # end
 # #
 # #
 # # m1() { |f, y, b, a| puts f * y * b;  puts a}
-#
-#
-#
+
+
+
 # def trains_block
 #   @trains.each {|train| yield(train)}
 # end
@@ -127,5 +127,5 @@ class Suck < Main
     self.class.sides[name] = self
   end
 
- 
+
 end

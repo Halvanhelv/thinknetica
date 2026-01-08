@@ -31,20 +31,20 @@ class Station
   end
 
   def validate!
-    raise 'Нет названия у станции' unless @name
-    raise 'Название станции должно иметь минимум 6 символов' if @name.length < 6
+    raise 'Station has no name' unless @name
+    raise 'Station name must have minimum 6 characters' if @name.length < 6
   end
 
   def add_train(train)
     @trains << train if train.route.stations.include?(self)
 
-    puts "На  станцию #{@name} Прибыл поезд поезд под номером #{train.number}"
+    puts "Train number #{train.number} arrived at station #{@name}"
   end
 
   def send_train(train)
     @trains.delete(train)
 
-    puts "Со станции #{@name} отправлен поезд под номером #{train.number}"
+    puts "Train number #{train.number} departed from station #{@name}"
   end
 
   def train_type

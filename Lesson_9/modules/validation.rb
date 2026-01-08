@@ -35,15 +35,15 @@ module Validation
     private
 
     def validate_presence(value)
-      raise 'Нет аргументов' if value.nil? || value.empty?
+      raise 'No arguments' if value.nil? || value.empty?
     end
 
     def validate_format(value, format)
-      raise 'Неверный формат' unless value =~ format.first
+      raise 'Invalid format' unless value =~ format.first
     end
 
     def validate_type(type_class, type)
-      raise 'Неверный тип' unless type_class.class == type
+      raise 'Invalid type' unless type_class.class == type
     end
   end
 end

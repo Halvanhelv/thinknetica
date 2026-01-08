@@ -1,11 +1,11 @@
-puts 'Введите длинну 3 сторон треугольника'
+puts 'Enter the length of 3 sides of the triangle'
 
-puts 'Первая сторона'
+puts 'First side'
 
 a = gets.chomp.to_i
-puts 'Вторая  сторона'
+puts 'Second side'
 b = gets.chomp.to_i
-puts 'Третья сторона'
+puts 'Third side'
 c = gets.chomp.to_i
 
 if a == b && b == c
@@ -21,13 +21,13 @@ hypotenuse = side.max
 side.delete_at(side.index(hypotenuse))
 right_triangle = (hypotenuse**2) == ( (side[0]**2) + (side[1]**2) ) ? true : false
 if equilateral
-  puts 'Треугольник равносторонний'
+  puts 'Triangle is equilateral'
 elsif isosceles && right_triangle
-  puts 'Треугольник равнобедренный и прямоугольный'
+  puts 'Triangle is isosceles and right'
 elsif !isosceles && right_triangle
-  puts 'Треугольник прямоугольный'
+  puts 'Triangle is right'
 elsif isosceles && !right_triangle
-  puts 'Равнобедренный треугольник'
+  puts 'Isosceles triangle'
 else
-  puts 'Просто треугольник'
+  puts 'Just a triangle'
 end

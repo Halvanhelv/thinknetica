@@ -9,13 +9,13 @@ class Station
   def add_train(train)
     @trains << train if train.route.stations.include?(self)
 
-    puts "На  станцию #{@name} Прибыл поезд поезд под номером #{train.number}"
+    puts "Train number #{train.number} arrived at station #{@name}"
   end
 
   def send_train(train)
     @trains.delete(train)
 
-    puts "Со станции #{@name} отправлен поезд под номером #{train.number}"
+    puts "Train number #{train.number} departed from station #{@name}"
   end
 
   def train_type

@@ -5,7 +5,7 @@ class Train
   include InstanceCounter
   attr_reader :number, :type
   attr_accessor :speed, :route, :current, :train_type, :wagons
-  NUMBER_FORMAT = /^[а-яa-z0-9]{3}-?[а-яa-z0-9]{2}$/i.freeze
+  NUMBER_FORMAT = /^[a-z0-9]{3}-?[a-z0-9]{2}$/i.freeze
   @@trains = {}
   def initialize(number)
     @speed = 0
@@ -21,9 +21,9 @@ class Train
   end
 
   def validate!
-    raise 'Номер отсутствует' if @number.nil?
-    raise 'Неверная длина номера' if @number.length < 4 || @number.length > 7
-    raise 'Номер не соответствует формату' unless @number =~ NUMBER_FORMAT
+    raise 'Number is missing' if @number.nil?
+    raise 'Invalid number length' if @number.length < 4 || @number.length > 7
+    raise 'Number does not match format' unless @number =~ NUMBER_FORMAT
 
   end
 
@@ -50,9 +50,9 @@ class Train
     if wagon.wagon_type == train_type
       wagons << wagon
 
-      puts "Вагон #{wagon} прицеплен"
+      puts "Wagon #{wagon} attached"
     else
-      raise 'Приципите вагон правильного типа'
+      raise 'Attach a wagon of the correct type'
     end
   end
 
@@ -60,32 +60,32 @@ class Train
     @route = route
     @current = route.stations.first
     route.stations.first.add_train(self)
-    puts "Поезд №#{@number} готов ехать с станции #{@route.stations.first.name} на станцию #{@route.stations.last.name}"
+    puts "Train ##{@number} ready to go from station #{@route.stations.first.name} to station #{@route.stations.last.name}"
 
   end
 
   def prev_station
-    raise 'У поезда нет маршрута' unless @route
+    raise 'Train has no route' unless @route
 
     if @current != @route.stations.first
       prev_step = @route.stations.index(@current) - 1
       @current = @route.stations[ prev_step]
       route.stations[prev_step].add_train(self)
     else
-      raise 'Станция конечная'
+      raise 'Station is terminal'
     end
 
   end
 
   def next_station
-    raise 'У поезда нет маршрута' unless @route
+    raise 'Train has no route' unless @route
 
     if @current != @route.stations.last
       next_step = @route.stations.index(@current) + 1
       @current = @route.stations[next_step]
       route.stations[next_step].add_train(self)
     else
-      raise 'Станция конечная'
+      raise 'Station is terminal'
     end
 
   end
@@ -96,10 +96,10 @@ class Train
 
   def stop_train
     if self.speed <= 0
-      raise 'Поезд уже остановлен'
+      raise 'Train is already stopped'
     else
       self.speed = 0
-      puts 'Поезд остановлен'
+      puts 'Train stopped'
     end
   end
 end

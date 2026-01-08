@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Acсessors
+module Accessors
   def self.included(base)
     base.extend self
   end
@@ -34,7 +34,7 @@ module Acсessors
     define_method(name) { instance_variable_get(set_var_name) }
 
     define_method("#{name}=".to_sym) do |value|
-      raise 'Неправильный тип' unless value.class == cls_name
+      raise 'Wrong type' unless value.class == cls_name
 
       instance_variable_set(set_var_name, value)
     end

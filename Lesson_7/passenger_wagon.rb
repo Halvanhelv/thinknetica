@@ -14,10 +14,10 @@ class PassengerWagon < Wagon
   end
 
   def take_place
-    raise 'Нет свободных мест.' if @free_places.zero?
+    raise 'No free seats.' if @free_places.zero?
 
     @free_places -= 1
-    puts "Теперь в вагоне #{free_places} мест"
+    puts "Now wagon has #{free_places} seats"
   end
 
   def busy

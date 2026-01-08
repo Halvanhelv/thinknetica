@@ -1,20 +1,20 @@
-puts 'Введите 3 числа'
-puts 'Введите первое число'
+puts 'Enter 3 numbers'
+puts 'Enter the first number'
 a = gets.chomp.to_f
-puts 'Введите второе число'
+puts 'Enter the second number'
 b = gets.chomp.to_f
-puts 'Введите третье число'
+puts 'Enter the third number'
 c = gets.chomp.to_f
 
 D = b**2 - 4 * a * c
 if D < 0
-  puts 'Нет корней'
+  puts 'No roots'
 elsif  D == 0
   x = - b / 2 * a
-  puts "найден один корень = #{x}, Дискриминант равен  #{D}"
+  puts "found one root = #{x}, Discriminant equals #{D}"
 else
   c = Math.sqrt(D)
   x1 = (-b + c) / (2 * a)
   x2 = (-b - c) / (2 * a)
-  puts "Первый корень  = #{x1}, Второй корень = #{x2}, Дискриминант =  #{D} "
+  puts "First root = #{x1}, Second root = #{x2}, Discriminant = #{D} "
 end

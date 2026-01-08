@@ -1,16 +1,16 @@
-puts 'Введите свое имя'
+puts 'Enter your name'
 name = gets.chomp.to_s
-puts 'Введите свой рост в см'
+puts 'Enter your height in cm'
 height = gets.chomp.to_i
 if height <= 0
-  abort 'Введите нормальный вес'
+  abort 'Enter a valid weight'
 end
 
 perfect  =  (height - 110) * 1.15
 if perfect >= 0
-puts "Уважаемый #{name} ваш идеальный вес -- #{perfect} кг"
+puts "Dear #{name} your ideal weight is #{perfect} kg"
 else
-  puts 'Ваш вес уже оптимальный'
+  puts 'Your weight is already optimal'
 end
 
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-puts 'Введите день '
+puts 'Enter day'
 day = gets.chomp.to_i
-puts 'Введите месяц '
+puts 'Enter month'
 month = gets.chomp.to_i
-puts 'Введите год '
+puts 'Enter year'
 year = gets.chomp.to_i
 
 days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]

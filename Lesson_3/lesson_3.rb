@@ -9,13 +9,13 @@ class Station
   def add_train(train)
     @trains << train if train.route.stations.include?(self)
 
-    puts "На  станцию #{@name} Прибыл поезд поезд под номером #{train.number}"
+    puts "Train number #{train.number} arrived at station #{@name}"
   end
 
   def send_train(train)
     @trains.delete(train)
 
-    puts "Со станции #{@name} отправлен поезд под номером #{train.number}"
+    puts "Train number #{train.number} departed from station #{@name}"
   end
 
   def train_type
@@ -61,9 +61,9 @@ class Train
   def add_wagon
     if count > 0
       self.count -= 1
-      puts "Вагон отцеплен, осталось #{count} вагонов"
+      puts "Wagon detached, #{count} wagons remaining"
     else
-      puts 'Вагонов не осталось'
+      puts 'No wagons left'
     end
   end
 
@@ -71,7 +71,7 @@ class Train
     @route = route
     @current = route.stations.first
     route.stations.first.add_train(self)
-    puts "Поезд №#{@number} готов ехать с станции #{@route.stations.first.name} на станцию #{@route.stations.last.name}"
+    puts "Train ##{@number} ready to go from station #{@route.stations.first.name} to station #{@route.stations.last.name}"
 
   end
 
@@ -81,7 +81,7 @@ class Train
       @current = @route.stations[ prev_step]
       route.stations[prev_step].add_train(self)
     else
-      puts 'Станция конечная'
+      puts 'Station is terminal'
     end
   end
 
@@ -92,7 +92,7 @@ class Train
       @current = @route.stations[next_step]
       route.stations[next_step].add_train(self)
     else
-      puts 'Станция конечная'
+      puts 'Station is terminal'
     end
   end
 
@@ -102,10 +102,10 @@ class Train
 
   def stop_train
     if self.speed <= 0
-      puts 'Поезд уже остановлен'
+      puts 'Train is already stopped'
     else
       self.speed = 0
-      puts 'Поезд остановлен'
+      puts 'Train stopped'
     end
   end
   end
@@ -115,10 +115,10 @@ class Route
   def initialize(stations = [])
     if stations.size >= 2
       @stations = stations
-      puts "Маршрут #{@stations.first.name} - #{@stations.last.name} создан"
+      puts "Route #{@stations.first.name} - #{@stations.last.name} created"
 
     else
-      puts 'Должна быть начальная и конечная станция!'
+      puts 'There must be a starting and ending station!'
   end
   end
 

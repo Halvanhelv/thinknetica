@@ -22,9 +22,9 @@ class Train
     if wagon.wagon_type == train_type
     wagons << wagon
 
-    puts "Вагон #{wagon} прицеплен"
+    puts "Wagon #{wagon} attached"
     else
-      puts 'Приципите вагон правильного типа'
+      puts 'Attach a wagon of the correct type'
     end
   end
 
@@ -32,7 +32,7 @@ class Train
     @route = route
     @current = route.stations.first
     route.stations.first.add_train(self)
-    puts "Поезд №#{@number} готов ехать с станции #{@route.stations.first.name} на станцию #{@route.stations.last.name}"
+    puts "Train ##{@number} ready to go from station #{@route.stations.first.name} to station #{@route.stations.last.name}"
 
   end
 
@@ -43,10 +43,10 @@ class Train
       @current = @route.stations[ prev_step]
       route.stations[prev_step].add_train(self)
     else
-      puts 'Станция конечная'
+      puts 'Station is terminal'
     end
     else
-      puts "У поезда нет маршрута"
+      puts "Train has no route"
     end
   end
 
@@ -57,10 +57,10 @@ class Train
       @current = @route.stations[next_step]
       route.stations[next_step].add_train(self)
     else
-      puts 'Станция конечная'
+      puts 'Station is terminal'
     end
     else
-      puts "У поезда нет маршрута"
+      puts "Train has no route"
     end
   end
 
@@ -70,10 +70,10 @@ class Train
 
   def stop_train
     if self.speed <= 0
-      puts 'Поезд уже остановлен'
+      puts 'Train is already stopped'
     else
       self.speed = 0
-      puts 'Поезд остановлен'
+      puts 'Train stopped'
     end
   end
   end

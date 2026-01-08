@@ -1,20 +1,20 @@
 # frozen_string_literal: true
-# Если добавить товар с таким же названием то данные по товару обновятся, нужно оставить так или сделать что бы количество товара и цена добавлялась?
+# If you add a product with the same name, the product data will be updated. Should it stay this way or should the quantity and price be added?
 cart = {}
 total_price = 0
 loop do
-  puts 'Введите название товара'
+  puts 'Enter product name'
   name = gets.chomp
-  break if name.downcase == 'стоп'
+  break if name.downcase == 'stop'
 
-  puts 'Введите цену товара'
+  puts 'Enter product price'
   price = gets.chomp.to_f
-  puts 'Введите количество товара'
+  puts 'Enter product quantity'
   count = gets.chomp.to_f
   cart[name] = { price: price, count: count, total: count * price }
-  puts "Конкретный товар #{name} куплен на сумму #{cart[name][:total]}"
+  puts "Specific product #{name} purchased for #{cart[name][:total]}"
 end
 
 cart.each { |name, value| total_price += value[:price] * value[:count] }
 puts cart
-puts "Итого: #{total_price}"
+puts "Total: #{total_price}"
